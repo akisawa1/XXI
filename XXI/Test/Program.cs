@@ -15,7 +15,10 @@ namespace Test
             WorkflowInvoker.Invoke(workflow1);
 
             ExchageRates er = new ExchageRates();
+            
             er.StartDownloadTimer(DateTime.Now);
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
             //decimal rate = er.GetRate(826, DateTime.Now.Date);
         }
     }
