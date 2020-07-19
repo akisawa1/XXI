@@ -51,8 +51,10 @@ namespace XXI
             wc.DownloadFile(adress, "temp.xml");
 
             XDocument xdoc = XDocument.Load("temp.xml");
-            DateTime today = DateTime.Parse(
+            DateTime today = DateTime.Now.Date;
+                /*DateTime.Parse(
                 xdoc.Element("ValCurs").Attribute("Date").Value);
+                */
             foreach (XElement v in xdoc.Element("ValCurs").Elements("Valute"))
             {
                 using (RateContext db=new RateContext())
