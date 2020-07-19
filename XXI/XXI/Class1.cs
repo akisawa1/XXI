@@ -51,16 +51,15 @@ namespace XXI
             wc.DownloadFile(adress, "temp.xml");
 
             XDocument xdoc = XDocument.Load("temp.xml");
-            DateTime today = DateTime.Now.Date;
-                /*DateTime.Parse(
+            DateTime today = DateTime.Parse(
                 xdoc.Element("ValCurs").Attribute("Date").Value);
-                */
+                
             foreach (XElement v in xdoc.Element("ValCurs").Elements("Valute"))
             {
                 using (RateContext db=new RateContext())
                 {
                     System.Data.SqlClient.SqlParameter pDate = new System.Data.SqlClient.SqlParameter("@date", 
-                        DateTime.Now.Date);
+                        today);
                     var list = db.Rates.SqlQuery("SELECT * FROM Rates WHERE Rates.date=@date", pDate);
                     if (list.Count() > 0) return;
 
