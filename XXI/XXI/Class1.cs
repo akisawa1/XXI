@@ -57,7 +57,8 @@ namespace XXI
             {
                 using (RateContext db=new RateContext())
                 {
-                    System.Data.SqlClient.SqlParameter pDate = new System.Data.SqlClient.SqlParameter("@date", today);
+                    System.Data.SqlClient.SqlParameter pDate = new System.Data.SqlClient.SqlParameter("@date", 
+                        DateTime.Now.Date);
                     var list = db.Rates.SqlQuery("SELECT * FROM Rates WHERE Rates.date=@date", pDate);
                     if (list.Count() > 0) return;
 
